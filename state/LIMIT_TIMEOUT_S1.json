@@ -1,0 +1,28 @@
+{
+  "scenario_id": "LIMIT_TIMEOUT_S1",
+  "user_message": "My order ORD-100048 reached me very late. I would like a refund.",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are the INSTAMART REFUND AGENT.\n\nFollow the refund policy and use the available tools.\nAlways retrieve the order before deciding.\nSearch the policy before calculating a refund.\nOnly completed orders are eligible.\nA delivery taking more than 45 minutes qualifies for a full refund.\nA refund up to INR 1000 can be issued automatically.\nA refund above INR 1000 must be escalated to a human.\nNever claim a refund was issued unless the issue_refund tool succeeds.\nNever claim an escalation was sent unless the escalation tool succeeds.\nIf an order does not exist, report NOT_FOUND.\nIf the order is cancelled or not eligible, report DENIED.\nBe concise and use the tools in the correct order.\n"
+    },
+    {
+      "role": "user",
+      "content": "My order ORD-100048 reached me very late. I would like a refund."
+    }
+  ],
+  "iterations": 0,
+  "tool_executions": 0,
+  "total_tokens": 0,
+  "tool_history": [],
+  "completed": true,
+  "result": {
+    "scenario_id": "LIMIT_TIMEOUT_S1",
+    "outcome": "FALLBACK_TIMEOUT",
+    "answer": "The agent reached its execution time limit.",
+    "iterations": 0,
+    "tool_executions": 0,
+    "total_tokens": 0,
+    "tool_history": []
+  }
+}

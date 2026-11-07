@@ -1,0 +1,84 @@
+{
+  "scenario_id": "LIMIT_TOKEN_S1",
+  "user_message": "My order ORD-100048 reached me very late. I would like a refund.",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nYou are the INSTAMART REFUND AGENT.\n\nFollow the refund policy and use the available tools.\nAlways retrieve the order before deciding.\nSearch the policy before calculating a refund.\nOnly completed orders are eligible.\nA delivery taking more than 45 minutes qualifies for a full refund.\nA refund up to INR 1000 can be issued automatically.\nA refund above INR 1000 must be escalated to a human.\nNever claim a refund was issued unless the issue_refund tool succeeds.\nNever claim an escalation was sent unless the escalation tool succeeds.\nIf an order does not exist, report NOT_FOUND.\nIf the order is cancelled or not eligible, report DENIED.\nBe concise and use the tools in the correct order.\n"
+    },
+    {
+      "role": "user",
+      "content": "My order ORD-100048 reached me very late. I would like a refund."
+    },
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_1",
+          "type": "function",
+          "function": {
+            "name": "get_order",
+            "arguments": "{\"order_id\": \"ORD-100048\"}"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "tool_call_id": "call_1",
+      "name": "get_order",
+      "content": "{\"order_id\": \"ORD-100048\", \"customer_id\": \"C0007\", \"product_id\": \"P010\", \"quantity\": 3, \"order_ts\": \"2025-04-02 22:39:44\", \"status\": \"completed\", \"discount_pct\": 5, \"order_amount\": 128.25, \"delivery_minutes\": 65.0}"
+    }
+  ],
+  "iterations": 2,
+  "tool_executions": 1,
+  "total_tokens": 395,
+  "tool_history": [
+    {
+      "tool": "get_order",
+      "arguments": {
+        "order_id": "ORD-100048"
+      },
+      "observation": {
+        "order_id": "ORD-100048",
+        "customer_id": "C0007",
+        "product_id": "P010",
+        "quantity": 3,
+        "order_ts": "2025-04-02 22:39:44",
+        "status": "completed",
+        "discount_pct": 5,
+        "order_amount": 128.25,
+        "delivery_minutes": 65.0
+      }
+    }
+  ],
+  "completed": true,
+  "result": {
+    "scenario_id": "LIMIT_TOKEN_S1",
+    "outcome": "FALLBACK_TOKEN_LIMIT",
+    "answer": "The agent reached its token budget.",
+    "iterations": 2,
+    "tool_executions": 1,
+    "total_tokens": 395,
+    "tool_history": [
+      {
+        "tool": "get_order",
+        "arguments": {
+          "order_id": "ORD-100048"
+        },
+        "observation": {
+          "order_id": "ORD-100048",
+          "customer_id": "C0007",
+          "product_id": "P010",
+          "quantity": 3,
+          "order_ts": "2025-04-02 22:39:44",
+          "status": "completed",
+          "discount_pct": 5,
+          "order_amount": 128.25,
+          "delivery_minutes": 65.0
+        }
+      }
+    ]
+  }
+}
